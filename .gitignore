@@ -1,2 +1,18 @@
+# Target jars #
 /target/
+
+# Compiled source #
+*.class
+
+# Eclipse files #
+.settings
+.classpath
+.project
+
+# ItelliJ files #
+.idea
+/AntiWorldFly.iml
+/shelf/
+/workspace.xml
+
 /dependency-reduced-pom.xml
