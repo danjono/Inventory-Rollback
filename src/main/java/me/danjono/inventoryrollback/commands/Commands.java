@@ -23,7 +23,7 @@ public class Commands extends ConfigFile implements CommandExecutor {
 
             if (args.length == 0) {
                 //Give version information
-                sender.sendMessage(MessageData.pluginName + "Server is running v" + InventoryRollback.getPluginVersion() + " - Created by danjono");
+                sender.sendMessage(MessageData.pluginName + "Server is running v" + InventoryRollback.getPluginVersion() + " - Created by danjono. Use '/ir help' for help!");
                 return true;
             } else {
                 switch (args[0]) {
@@ -117,6 +117,9 @@ public class Commands extends ConfigFile implements CommandExecutor {
                             sender.sendMessage(MessageData.pluginName + MessageData.noPermission);
                         }
                         break;
+                    }
+                    case "help": {
+                        HelpCommand.getHelp(sender);
                     }
                 }
             }
