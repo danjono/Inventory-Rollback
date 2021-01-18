@@ -12,6 +12,7 @@ public class HelpCommand {
     public static void getHelp(CommandSender sender) {
         sender.sendMessage(ChatColor.WHITE + "---------------- " + ChatColor.AQUA + ChatColor.BOLD + "Inventory Rollback" + ChatColor.WHITE + " ----------------");
         sender.sendMessage(ChatColor.AQUA + "/ir help" + ChatColor.WHITE + " - Lists all Inventory Restore commands.");
+        sender.sendMessage(ChatColor.AQUA + "/ir info" + ChatColor.WHITE + " - Displays some information about the plugin.");
 
         if (sender.hasPermission("inventoryrollback.reload")) {
             sender.sendMessage(ChatColor.AQUA + "/ir reload" + ChatColor.WHITE + " - Reloads the plugin's configuration.");
