@@ -24,6 +24,10 @@
 						<id>CodeMC</id>
 						<url>https://repo.codemc.org/repository/maven-public</url>
 				</repository>
+				<repository>
+						<id>jitpack.io</id>
+						<url>https://jitpack.io</url>
+				</repository>
 		</repositories>
 
 		<dependencies>
@@ -44,11 +48,10 @@
 
 				<!-- OpenInv API -->
 				<dependency>
-						<groupId>com.lishid</groupId>
-						<artifactId>OpenInv</artifactId>
+						<groupId>com.github.lishid.OpenInv</groupId>
+						<artifactId>openinvapi</artifactId>
 						<version>4.1.5</version>
-						<scope>system</scope>
-						<systemPath>${project.basedir}/lib/OpenInv.jar</systemPath>
+						<scope>provided</scope>
 				</dependency>
 		</dependencies>
 
