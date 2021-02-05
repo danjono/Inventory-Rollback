@@ -97,6 +97,8 @@ public class ConfigData {
 
     private static boolean bStatsEnabled;
 
+    private static boolean openInvEnabled;
+
     public void setVariables() {		
         setEnabled((boolean) getDefaultValue("enabled", true));
 
@@ -138,6 +140,8 @@ public class ConfigData {
 
         setUpdateChecker((boolean) getDefaultValue("update-checker", true));
         setbStatsEnabled((boolean) getDefaultValue("bStats", true));
+
+        setOpenInvEnabled((boolean) getDefaultValue("OpenInv", true));
 
         if (saveChanges())
             saveConfig();
@@ -243,6 +247,10 @@ public class ConfigData {
         bStatsEnabled = enabled;
     }
 
+    public static void setOpenInvEnabled(boolean enabled) {
+        openInvEnabled = enabled;
+    }
+
     public static boolean isEnabled() {
         return pluginEnabled;
     }
@@ -325,6 +333,10 @@ public class ConfigData {
 
     public static boolean isbStatsEnabled() {
         return bStatsEnabled;
+    }
+
+    public static boolean isOpenInvEnabled() {
+        return openInvEnabled;
     }
 
     private boolean saveChanges = false;

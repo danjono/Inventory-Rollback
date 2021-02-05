@@ -8,11 +8,7 @@ import java.util.Set;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
@@ -26,7 +22,7 @@ import me.danjono.inventoryrollback.gui.menu.MainMenu;
 import me.danjono.inventoryrollback.gui.menu.PlayerMenu;
 import me.danjono.inventoryrollback.inventory.SaveInventory;
 
-public class Commands extends ConfigData implements CommandExecutor, TabCompleter {
+public class Commands extends ConfigData implements TabExecutor {
 
     @Override		
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

@@ -4,6 +4,8 @@ version: ${project.version}
 description: ${project.description}
 author: ${project.organization.name}
 api-version: 1.13
+softdepend:
+  - OpenInv
 commands:
   inventoryrollback:
     description: ${project.description}

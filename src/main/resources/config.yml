@@ -55,3 +55,7 @@ update-checker: true
 ## Allow bStats to collect anonymous server data.
 ## Please leave enabled as it allows the plugin developer to see statistics about the plugin.
 bStats: true
+
+## Enable OpenInv integration.
+## This allows you to restore players' inventories even when they are offline.
+OpenInv: true

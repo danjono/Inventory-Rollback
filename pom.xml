@@ -41,6 +41,15 @@
 						<artifactId>bstats-bukkit</artifactId>
 						<version>1.5</version>
 				</dependency>
+
+				<!-- OpenInv API -->
+				<dependency>
+						<groupId>com.lishid</groupId>
+						<artifactId>OpenInv</artifactId>
+						<version>4.1.5</version>
+						<scope>system</scope>
+						<systemPath>${project.basedir}/lib/OpenInv.jar</systemPath>
+				</dependency>
 		</dependencies>
 
 		<build>

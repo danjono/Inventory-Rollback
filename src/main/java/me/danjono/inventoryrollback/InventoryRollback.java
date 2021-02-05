@@ -5,6 +5,7 @@ import java.util.concurrent.Callable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.lishid.openinv.IOpenInv;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -26,6 +27,7 @@ public class InventoryRollback extends JavaPlugin {
     private static final Logger logger = Logger.getLogger("Minecraft");
     private static InventoryRollback instance;
     private static String packageVersion;
+    private static IOpenInv openInv = null;
 
     public static Logger getPluginLogger() {
         return logger;
@@ -51,6 +53,10 @@ public class InventoryRollback extends JavaPlugin {
         return instance.getDescription().getVersion();  
     }
 
+    public static IOpenInv getOpenInv() {
+        return openInv;
+    }
+
     @Override
     public void onEnable() {
         setInstance(this);
@@ -65,6 +71,11 @@ public class InventoryRollback extends JavaPlugin {
 
         if (ConfigData.isbStatsEnabled())
             bStats();
+
+        if (ConfigData.isOpenInvEnabled() && Bukkit.getPluginManager().isPluginEnabled("OpenInv")) {
+            openInv = (IOpenInv) Bukkit.getPluginManager().getPlugin("OpenInv");
+            logger.log(Level.INFO, MessageData.getPluginName() + " Enabled OpenInv integration.");
+        }
 
         this.getCommand("inventoryrollback").setExecutor(new Commands());
 
@@ -95,7 +106,7 @@ public class InventoryRollback extends JavaPlugin {
         new MessageData().setMessages();    
         new SoundData().setSounds();
 
-        logger.log(Level.INFO, () -> MessageData.getPluginName() + "Inventory backup data is set to save to: " + ConfigData.getSaveType().getName());
+        logger.log(Level.INFO, MessageData.getPluginName() + "Inventory backup data is set to save to: " + ConfigData.getSaveType().getName());
 
         if (ConfigData.isUpdateCheckerEnabled())
             checkUpdate();

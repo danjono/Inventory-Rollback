@@ -261,8 +261,24 @@ public class ClickGUI implements Listener {
 
             //Clicked icon to overwrite player inventory with backup data
             else if (icon.getType().equals(Buttons.getRestoreAllInventoryIcon())) {
-                if (offlinePlayer.isOnline()) {
-                    Player player = (Player) offlinePlayer;
+                // OpenInv
+                if (offlinePlayer.isOnline() || InventoryRollback.getOpenInv() != null) {
+                    Player player;
+                    boolean openInv = false;
+                    if (offlinePlayer.isOnline()) {
+                        player = (Player) offlinePlayer;
+                    } else {
+                        try {
+                            player = InventoryRollback.getOpenInv().loadPlayer(offlinePlayer);
+                        } catch (IllegalStateException ex) {
+                            return;
+                        }
+                        if (player == null)
+                            return;
+
+                        InventoryRollback.getOpenInv().retainPlayer(player, InventoryRollback.getInstance());
+                        openInv = true;
+                    }
 
                     data.getAllBackupData();
 
@@ -278,7 +294,10 @@ public class ClickGUI implements Listener {
 
                     player.sendMessage(MessageData.getPluginName() + MessageData.getMainInventoryRestoredPlayer(staff.getName()));
                     if (!staff.getUniqueId().equals(player.getUniqueId()))
-                        staff.sendMessage(MessageData.getPluginName() + MessageData.getMainInventoryRestored(offlinePlayer.getName()));           
+                        staff.sendMessage(MessageData.getPluginName() + MessageData.getMainInventoryRestored(offlinePlayer.getName()));
+
+                    if (openInv)
+                        InventoryRollback.getOpenInv().releasePlayer(player, InventoryRollback.getInstance());
                 } else {
                     staff.sendMessage(MessageData.getPluginName() + MessageData.getMainInventoryNotOnline(offlinePlayer.getName()));
                 }
