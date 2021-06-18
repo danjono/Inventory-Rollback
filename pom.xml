@@ -5,10 +5,11 @@
     <groupId>InventoryRollback</groupId>
     <artifactId>InventoryRollback</artifactId>
     <version>1.5.0</version>
-    <name>InventoryRollback</name>
+    <name>InventoryRollback-Continued</name>
 
     <organization>
         <name>danjono</name>
+        <url>https://github.com/Sidpatchy/Inventory-Rollback</url>
     </organization>
 
     <properties>
