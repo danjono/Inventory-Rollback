@@ -34,4 +34,4 @@ inventoryrollback.leavesave - Saves inventory on leaving the server. (Default: A
 inventoryrollback.worldchangesave  - Saves inventory when changing to a different world. (Default: All)  
 
 ## Spigot Link
-[https://www.spigotmc.org/resources/inventory-rollback.48074/](https://www.spigotmc.org/resources/inventory-rollback.48074/)
+[https://www.spigotmc.org/resources/inventory-rollback-continued.93436/](https://www.spigotmc.org/resources/inventory-rollback-continued.93436/)
