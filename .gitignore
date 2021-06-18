@@ -16,3 +16,6 @@
 /workspace.xml
 
 /dependency-reduced-pom.xml
+.idea
+/out/
+/InventoryRollback.iml

@@ -2,6 +2,7 @@ package me.danjono.inventoryrollback;
 
 import me.danjono.inventoryrollback.UpdateChecker.UpdateResult;
 import me.danjono.inventoryrollback.commands.Commands;
+import me.danjono.inventoryrollback.commands.CommandsTab;
 import me.danjono.inventoryrollback.config.ConfigFile;
 import me.danjono.inventoryrollback.listeners.ClickGUI;
 import me.danjono.inventoryrollback.listeners.EventLogs;
@@ -49,6 +50,7 @@ public class InventoryRollback extends JavaPlugin {
             bStats();
 
         this.getCommand("inventoryrollback").setExecutor(new Commands());
+        this.getCommand("inventoryrollback").setTabCompleter(new CommandsTab());
 
         this.getServer().getPluginManager().registerEvents(new ClickGUI(), instance);
         this.getServer().getPluginManager().registerEvents(new EventLogs(), instance);
