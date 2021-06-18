@@ -1,3 +1,6 @@
+# Why does this fork exist?
+Danjono, the plugin's original dev, seems to have disappeared off the face of the earth. I intend to maintain this fork in their absence. I will be manually merging pull requests (which I believe are of benefit to the plugin) from the original repo.
+
 ![](https://i.imgur.com/KmwQQoi.png)
 # Inventory Rollback
 
