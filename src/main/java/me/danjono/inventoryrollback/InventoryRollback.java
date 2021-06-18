@@ -40,7 +40,7 @@ public class InventoryRollback extends JavaPlugin {
 
         if (!isCompatible()) {
             logger.log(Level.WARNING, ChatColor.RED + " ** WARNING... Plugin may not be compatible with this version of Minecraft. **");
-            logger.log(Level.WARNING, ChatColor.RED + " ** Tested versions: 1.8.8 to 1.16.3 **");
+            logger.log(Level.WARNING, ChatColor.RED + " ** Tested versions: 1.8.8 to 1.17 **");
             logger.log(Level.WARNING, ChatColor.RED + " ** Please fully test the plugin before using on your server as features may be broken. **");
         }
 
@@ -84,7 +84,12 @@ public class InventoryRollback extends JavaPlugin {
         v1_14_R1,
         v1_15_R1,
         V1_16_R1,
-        V1_16_R2
+        V1_16_R2,
+        V1_16_R3,
+        V1_16_R4,
+        V1_16_R5,
+        V1_16_R6,
+        V1_17_R1,
     }
 
     public enum VersionName {
@@ -129,7 +134,10 @@ public class InventoryRollback extends JavaPlugin {
 
     @SuppressWarnings("unused")
     private void bStats() {
-        Metrics metrics = new Metrics(this);
+        /*
+        int pluginId = <PLUGIN ID GOES HERE>;
+        Metrics metrics = new Metrics(this, pluginId);
+        */
     }
 
     public static void checkUpdate(boolean enabled) {
@@ -147,8 +155,8 @@ public class InventoryRollback extends JavaPlugin {
             }
             case UPDATE_AVAILABLE: {
                 logger.log(Level.INFO, ChatColor.AQUA + "===============================================================================");
-                logger.log(Level.INFO, ChatColor.AQUA + "An update to InventoryRollback is available!");
-                logger.log(Level.INFO, ChatColor.AQUA + "Download at https://www.spigotmc.org/resources/inventoryrollback.48074/");
+                logger.log(Level.INFO, ChatColor.AQUA + "An update to Inventory Rollback: Continued is available!");
+                logger.log(Level.INFO, ChatColor.AQUA + "Download at https://github.com/Sidpatchy/Inventory-Rollback/releases"); // Temporary location
                 logger.log(Level.INFO, ChatColor.AQUA + "===============================================================================");
                 break;
             }

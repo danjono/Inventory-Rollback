@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>InventoryRollback</groupId>
     <artifactId>InventoryRollback</artifactId>
-    <version>1.4.0</version>
+    <version>1.5.0</version>
     <name>InventoryRollback</name>
 
     <organization>
@@ -31,7 +31,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.9-R0.1-SNAPSHOT</version>
+            <version>1.17-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
@@ -39,8 +39,17 @@
         <dependency>
             <groupId>org.bstats</groupId>
             <artifactId>bstats-bukkit</artifactId>
-            <version>1.4</version>
+            <version>2.2.1</version>
+            <scope>compile</scope>
         </dependency>
+
+        <!-- SnakeYAML -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.29</version>
+        </dependency>
+
     </dependencies>
 
     <build>
