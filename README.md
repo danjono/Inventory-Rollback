@@ -4,6 +4,11 @@ Danjono, the plugin's original dev, seems to have disappeared off the face of th
 [![Build Status](https://ci.sidpatchy.com/buildStatus/icon?job=InventoryRollback-Continued&style=flat-square)](https://ci.sidpatchy.com/job/InventoryRollback-Continued/)
 [![License](https://img.shields.io/github/license/Sidpatchy/Inventory-Rollback?style=flat-square)](https://github.com/Sidpatchy/Inventory-Rollback/blob/master/LICENSE)
 
+# 1.18 Support
+Experimental builds supporting 1.18 can be found on my Jenkins: https://ci.sidpatchy.com/job/InventoryRollback-Continued/
+
+The experimental builds require NBTAPI v2.9.0+: https://www.spigotmc.org/resources/nbt-api.7939/
+
 ![](https://i.imgur.com/KmwQQoi.png)
 # Inventory Rollback
 
