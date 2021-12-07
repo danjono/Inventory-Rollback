@@ -1,5 +1,6 @@
 package me.danjono.inventoryrollback.listeners;
 
+import de.tr7zw.nbtapi.NBTItem;
 import me.danjono.inventoryrollback.InventoryRollback;
 import me.danjono.inventoryrollback.InventoryRollback.VersionName;
 import me.danjono.inventoryrollback.config.MessageData;
@@ -8,7 +9,6 @@ import me.danjono.inventoryrollback.data.LogType;
 import me.danjono.inventoryrollback.data.PlayerData;
 import me.danjono.inventoryrollback.gui.*;
 import me.danjono.inventoryrollback.inventory.RestoreInventory;
-import me.danjono.inventoryrollback.reflections.NBT;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -96,13 +96,13 @@ public class ClickGUI extends Buttons implements Listener {
         if (icon == null)
             return;
 
-        if ((e.getRawSlot() >= 0 && e.getRawSlot() < 9)) {
-            NBT nbt = new NBT(icon);
-            if (!nbt.hasUUID())
+        if ((e.getRawSlot() >= 1 && e.getRawSlot() < 9)) {
+            NBTItem nbti = new NBTItem(icon);
+            if (nbti.getString("uuid") == null)
                 return;
 
-            LogType logType = LogType.valueOf(nbt.getString("logType"));
-            OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(UUID.fromString(nbt.getString("uuid")));
+            LogType logType = LogType.valueOf(nbti.getString("logType"));
+            OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(UUID.fromString(nbti.getString("uuid")));
 
             staff.openInventory(new RollbackListMenu(staff, offlinePlayer, logType, 1).showBackups());
         } else {
@@ -114,16 +114,16 @@ public class ClickGUI extends Buttons implements Listener {
 
     private void rollbackMenu(InventoryClickEvent e) {
         if (e.getRawSlot() >= 0 && e.getRawSlot() < 45) {
-            NBT nbt = new NBT(icon);
-            if (!nbt.hasUUID())
+            NBTItem nbti = new NBTItem(icon);
+            if (nbti.getString("uuid") == null)
                 return;
 
             //Player has selected a backup to open
             if (icon.getType().equals(Material.CHEST)) {
-                UUID uuid = UUID.fromString(nbt.getString("uuid"));
-                Long timestamp = nbt.getLong("timestamp");
-                LogType logType = LogType.valueOf(nbt.getString("logType"));
-                String location = nbt.getString("location");
+                UUID uuid = UUID.fromString(nbti.getString("uuid"));
+                Long timestamp = nbti.getLong("timestamp");
+                LogType logType = LogType.valueOf(nbti.getString("logType"));
+                String location = nbti.getString("location");
 
                 FileConfiguration playerData = new PlayerData(uuid, logType).getData();
 
@@ -134,7 +134,7 @@ public class ClickGUI extends Buttons implements Listener {
 
                 boolean enderchest = false;
                 for (ItemStack item : restore.retrieveEnderChestInventory()) {
-                    if (item != null) {
+                    if (item == null) {
                         enderchest = true;
                         break;
                     }
@@ -154,15 +154,15 @@ public class ClickGUI extends Buttons implements Listener {
 
             //Player has selected a page icon
             else if (icon.getType().equals(getPageSelectorIcon().getType())) {
-                int page = nbt.getInt("page");
+                int page = nbti.getInteger("page");
 
                 if (page == 0) {
-                    OfflinePlayer player = Bukkit.getOfflinePlayer(UUID.fromString(nbt.getString("uuid")));
+                    OfflinePlayer player = Bukkit.getOfflinePlayer(UUID.fromString(nbti.getString("uuid")));
 
                     staff.openInventory(new MainMenu(staff, player).getMenu());
                 } else {
-                    OfflinePlayer player = Bukkit.getOfflinePlayer(UUID.fromString(nbt.getString("uuid")));
-                    LogType logType = LogType.valueOf(nbt.getString("logType"));
+                    OfflinePlayer player = Bukkit.getOfflinePlayer(UUID.fromString(nbti.getString("uuid")));
+                    LogType logType = LogType.valueOf(nbti.getString("logType"));
 
                     staff.openInventory(new RollbackListMenu(staff, player, logType, page).showBackups());
                 }
@@ -181,13 +181,13 @@ public class ClickGUI extends Buttons implements Listener {
         MessageData messages = new MessageData();
 
         if (e.getRawSlot() >= 45 && e.getRawSlot() < 54) {
-            NBT nbt = new NBT(icon);
-            if (!nbt.hasUUID())
+            NBTItem nbti = new NBTItem(icon);
+            if (nbti.getString("uuid") == null)
                 return;
 
-            OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(UUID.fromString(nbt.getString("uuid")));
-            LogType logType = LogType.valueOf(nbt.getString("logType"));
-            Long timestamp = nbt.getLong("timestamp");
+            OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(UUID.fromString(nbti.getString("uuid")));
+            LogType logType = LogType.valueOf(nbti.getString("logType"));
+            Long timestamp = nbti.getLong("timestamp");
 
             PlayerData data = new PlayerData(offlinePlayer, logType);
             FileConfiguration playerData = data.getData();
@@ -201,7 +201,7 @@ public class ClickGUI extends Buttons implements Listener {
 
             //Clicked icon to teleport player to backup coordinates
             else if (icon.getType().equals(getEnderPearlIcon().getType())) {
-                String[] location = nbt.getString("location").split(",");
+                String[] location = nbti.getString("location").split(",");
                 World world = Bukkit.getWorld(location[0]);
 
                 if (world == null) {
@@ -255,7 +255,7 @@ public class ClickGUI extends Buttons implements Listener {
 
                 if (offlinePlayer.isOnline()) {
                     Player player = (Player) offlinePlayer;
-                    double health = nbt.getDouble("health");
+                    double health = nbti.getDouble("health");
 
                     player.setHealth(health);
 
@@ -275,8 +275,8 @@ public class ClickGUI extends Buttons implements Listener {
 
                 if (offlinePlayer.isOnline()) {
                     Player player = (Player) offlinePlayer;
-                    int hunger = nbt.getInt("hunger");
-                    Float saturation = nbt.getFloat("saturation");
+                    int hunger = nbti.getInteger("hunger");
+                    Float saturation = nbti.getFloat("saturation");
 
                     player.setFoodLevel(hunger);
                     player.setSaturation(saturation);
@@ -296,7 +296,7 @@ public class ClickGUI extends Buttons implements Listener {
             else if (icon.getType().equals(getExperienceIcon().getType())) {
                 if (offlinePlayer.isOnline()) {
                     Player player = (Player) offlinePlayer;
-                    Float xp = nbt.getFloat("xp");
+                    Float xp = nbti.getFloat("xp");
 
                     RestoreInventory.setTotalExperience(player, xp);
 

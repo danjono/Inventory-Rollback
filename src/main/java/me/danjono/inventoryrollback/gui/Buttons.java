@@ -1,11 +1,14 @@
 package me.danjono.inventoryrollback.gui;
 
+import de.tr7zw.nbtapi.NBTCompound;
+import de.tr7zw.nbtapi.NBTItem;
+import de.tr7zw.nbtapi.NBTList;
+import de.tr7zw.nbtapi.NBTListCompound;
 import me.danjono.inventoryrollback.InventoryRollback;
 import me.danjono.inventoryrollback.InventoryRollback.VersionName;
 import me.danjono.inventoryrollback.config.MessageData;
 import me.danjono.inventoryrollback.data.LogType;
 import me.danjono.inventoryrollback.inventory.RestoreInventory;
-import me.danjono.inventoryrollback.reflections.NBT;
 import org.bukkit.*;
 import org.bukkit.block.banner.Pattern;
 import org.bukkit.block.banner.PatternType;
@@ -76,12 +79,12 @@ public class Buttons {
 
         button.setItemMeta(meta);
 
-        NBT nbt = new NBT(button);
+        NBTItem nbti = new NBTItem(button);
 
-        nbt.setString("uuid", uuid.toString());
-        nbt.setString("logType", logType.name());
-        nbt.setInt("page", page);
-        button = nbt.setItemData();
+        nbti.setString("uuid", uuid.toString());
+        nbti.setString("logType", logType.name());
+        nbti.setInteger("page", page);
+        button = nbti.getItem();
 
         return button;
     }
@@ -110,12 +113,12 @@ public class Buttons {
 
         button.setItemMeta(meta);
 
-        NBT nbt = new NBT(button);
+        NBTItem nbti = new NBTItem(button);
 
-        nbt.setString("uuid", uuid.toString());
-        nbt.setString("logType", logType.name());
-        nbt.setInt("page", page);
-        button = nbt.setItemData();
+        nbti.setString("uuid", uuid.toString());
+        nbti.setString("logType", logType.name());
+        nbti.setInteger("page", page);
+        button = nbti.getItem();
 
         return button;
     }
@@ -140,10 +143,10 @@ public class Buttons {
 
         button.setItemMeta(meta);
 
-        NBT nbt = new NBT(button);
+        NBTItem nbti = new NBTItem(button);
 
-        nbt.setString("uuid", uuid.toString());
-        button = nbt.setItemData();
+        nbti.setString("uuid", uuid.toString());
+        button = nbti.getItem();
 
         return button;
     }
@@ -168,11 +171,11 @@ public class Buttons {
 
         button.setItemMeta(meta);
 
-        NBT nbt = new NBT(button);
+        NBTItem nbti = new NBTItem(button);
 
-        nbt.setString("uuid", uuid.toString());
-        nbt.setString("logType", logType.name());
-        button = nbt.setItemData();
+        nbti.setString("uuid", uuid.toString());
+        nbti.setString("logType", logType.name());
+        button = nbti.getItem();
 
         return button;
     }
@@ -189,13 +192,13 @@ public class Buttons {
 
         item.setItemMeta(meta);
 
-        NBT nbt = new NBT(item);
+        NBTItem nbti = new NBTItem(item);
 
-        nbt.setString("uuid", uuid.toString());
-        nbt.setString("logType", logType.name());
-        nbt.setLong("timestamp", time);
-        nbt.setString("location", location);
-        item = nbt.setItemData();
+        nbti.setString("uuid", uuid.toString());
+        nbti.setString("logType", logType.name());
+        nbti.setLong("timestamp", time);
+        nbti.setString("location", location);
+        item = nbti.getItem();
 
         return item;
     }
@@ -210,11 +213,11 @@ public class Buttons {
 
         item.setItemMeta(meta);
 
-        NBT nbt = new NBT(item);
+        NBTItem nbti = new NBTItem(item);
 
-        nbt.setString("uuid", uuid.toString());
-        nbt.setString("logType", logType.name());
-        item = nbt.setItemData();
+        nbti.setString("uuid", uuid.toString());
+        nbti.setString("logType", logType.name());
+        item = nbti.getItem();
 
         return item;
     }
@@ -265,12 +268,12 @@ public class Buttons {
 
         item.setItemMeta(meta);
 
-        NBT nbt = new NBT(item);
+        NBTItem nbti = new NBTItem(item);
 
-        nbt.setString("uuid", uuid.toString());
-        nbt.setString("logType", logType.name());
-        nbt.setString("location", location);
-        item = nbt.setItemData();
+        nbti.setString("uuid", uuid.toString());
+        nbti.setString("logType", logType.name());
+        nbti.setString("location", location);
+        item = nbti.getItem();
 
         return item;
     }
@@ -283,12 +286,12 @@ public class Buttons {
 
         item.setItemMeta(meta);
 
-        NBT nbt = new NBT(item);
+        NBTItem nbti = new NBTItem(item);
 
-        nbt.setString("uuid", uuid.toString());
-        nbt.setString("logType", logType.name());
-        nbt.setLong("timestamp", timestamp);
-        item = nbt.setItemData();
+        nbti.setString("uuid", uuid.toString());
+        nbti.setString("logType", logType.name());
+        nbti.setLong("timestamp", timestamp);
+        item = nbti.getItem();
 
         return item;
     }
@@ -301,12 +304,12 @@ public class Buttons {
 
         item.setItemMeta(meta);
 
-        NBT nbt = new NBT(item);
+        NBTItem nbti = new NBTItem(item);
 
-        nbt.setString("uuid", uuid.toString());
-        nbt.setString("logType", logType.name());
-        nbt.setDouble("health", health);
-        item = nbt.setItemData();
+        nbti.setString("uuid", uuid.toString());
+        nbti.setString("logType", logType.name());
+        nbti.setDouble("health", health);
+        item = nbti.getItem();
 
         return item;
     }
@@ -319,13 +322,13 @@ public class Buttons {
 
         item.setItemMeta(meta);
 
-        NBT nbt = new NBT(item);
+        NBTItem nbti = new NBTItem(item);
 
-        nbt.setString("uuid", uuid.toString());
-        nbt.setString("logType", logType.name());
-        nbt.setInt("hunger", hunger);
-        nbt.setFloat("saturation", saturation);
-        item = nbt.setItemData();
+        nbti.setString("uuid", uuid.toString());
+        nbti.setString("logType", logType.name());
+        nbti.setInteger("hunger", hunger);
+        nbti.setFloat("saturation", saturation);
+        item = nbti.getItem();
 
         return item;
     }
@@ -343,12 +346,12 @@ public class Buttons {
 
         item.setItemMeta(meta);
 
-        NBT nbt = new NBT(item);
+        NBTItem nbti = new NBTItem(item);
 
-        nbt.setString("uuid", uuid.toString());
-        nbt.setString("logType", logType.name());
-        nbt.setFloat("xp", xp);
-        item = nbt.setItemData();
+        nbti.setString("uuid", uuid.toString());
+        nbti.setString("logType", logType.name());
+        nbti.setFloat("xp", xp);
+        item = nbti.getItem();
 
         return item;
     }

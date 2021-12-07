@@ -19,3 +19,4 @@
 .idea
 /out/
 /InventoryRollback.iml
+dependency-reduced-pom.xml

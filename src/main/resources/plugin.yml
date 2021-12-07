@@ -1,4 +1,4 @@
-name: ${project.name}
+name: InventoryRollback-Continued
 main: me.danjono.inventoryrollback.InventoryRollback
 version: ${project.version}
 description: ${project.description}
