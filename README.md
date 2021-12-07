@@ -9,7 +9,7 @@ Experimental builds supporting 1.18 can be found on my Jenkins: https://ci.sidpa
 
 The experimental builds require NBTAPI v2.9.0+: https://www.spigotmc.org/resources/nbt-api.7939/
 
-![](https://i.imgur.com/KmwQQoi.png)
+![](https://i.imgur.com/zRdah4N.png)
 # Inventory Rollback
 
 ### Minecraft Bukkit Plugin - Tested with versions 1.8.8 - 1.17.1
